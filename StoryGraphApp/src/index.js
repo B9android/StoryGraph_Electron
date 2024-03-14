@@ -21,6 +21,10 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  mainWindow.webContents.on('did-finish-load', function () {
+    mainWindow.webContents.executeJavaScript(`createGraph()`);
+  });
 };
 
 // This method will be called when Electron has finished
